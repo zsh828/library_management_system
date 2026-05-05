@@ -31,7 +31,8 @@ class LibraryManager:
         keyword_lower = keyword.lower()
         results = []
         for book in self.books.values():
-            if keyword_lower in book.title.lower() or keyword_lower in book.isbn:
+            # Ensure ISBN comparison is case-insensitive as well for robustness
+            if keyword_lower in book.title.lower() or keyword_lower in book.isbn.lower():
                 results.append(book)
         return results
 
